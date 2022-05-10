@@ -1,5 +1,7 @@
 import React from 'react';
 import HornedBeast from './HornedBeast';
+import './bison.jpg';
+import './mountainGoat.jpg';
 
 
 class Main extends React.Component{
@@ -8,7 +10,7 @@ class Main extends React.Component{
             <main>
                 <HornedBeast 
                     title='Bison'
-                    imgUrl="./src/bison.jpg"
+                    imgUrl='./bison.jpg'
                     description='Largest land animal in North America'
                 />
                 <HornedBeast 
