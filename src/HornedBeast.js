@@ -17,7 +17,8 @@ class HornedBeast extends React.Component{
     }
 
     handleImgClick = () => {
-        this.props.openModalHandler(this.props.title, this.props.img_url, this.props.description)
+        this.props.openModalHandler(this.props.title, this.props.image_url, this.props.description);
+        console.log(this.handleImgClick);
     }
 
     render() {
@@ -33,8 +34,8 @@ class HornedBeast extends React.Component{
                 title={this.props.title}
                 />
             <Card.Body onClick={this.imgVote}>
-                <Card.Title>{
-                    this.props.title}
+                <Card.Title>
+                    {this.props.title}
                 </Card.Title>
                 <Card.Text>
                     {this.props.description}
