@@ -3,22 +3,21 @@ import Header from './Header.js';
 import Footer from './Footer.js';
 import Main from './Main.js';
 import data from './data.json';
-import Modal from 'react-bootstrap/Modal'
-
-
+import SelectedBeast from './SelectedBeast.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-    isModalDisplayed: false,
-    beastName: '',
-    beastPic: '',
-    beastDescription: ''
+      isModalDisplayed: false,
+      beastName: '',
+      beastPic: '',
+      beastDescription: ''
     };
   }
 
   openModalHandler = (title, image_url, description) => {
+    
     this.setState({
       isModalDisplayed: true,
       beastName: title,
@@ -26,7 +25,6 @@ class App extends React.Component {
       beastDescription: description
 
     });
-
   }
 
   closeModalHandler = () => {
@@ -44,23 +42,14 @@ class App extends React.Component {
         openModalHandler={this.openModalHandler}
       />
       <Footer />
-      <Modal
-        size="lg"
-        show={this.state.isModalDisplayed}
-        onHide={this.closeModalHandler}
-      >
-            <Modal.Header>
-              <Modal.Title>{this.state.beastName}</Modal.Title>
-            </Modal.Header>
 
-            <Modal.Body>
-              <img src={this.state.beastPic} alt={this.props.description} title={this.props.title}/>
-            </Modal.Body>
-
-            <Modal.Footer>
-              {this.state.beastDescription}
-            </Modal.Footer>
-      </Modal>
+      <SelectedBeast 
+        isModalDisplayed={this.state.isModalDisplayed}
+        beastPic={this.state.beastPic}
+        beastName={this.state.beastName}
+        beastDescription={this.state.beastDescription}
+        closeModalHandler={this.closeModalHandler}
+        />
 
       </>);
   }

@@ -9,15 +9,15 @@ class Main extends React.Component{
     
         return (
             <Row xs={1} sm={2} md={3} lg={4} className="g-4">
-                    {this.props.data.map((creature, idx) => {
+                    {this.props.data.map((beast, idx) => {
                      return(  
                         <HornedBeast
-                            id={creature._id} 
-                            image_url={creature.image_url}
-                            title={creature.title}
-                            description={creature.description}
-                            keyword={creature.keyword}
-                            horns={creature.horns}
+                            id={beast._id} 
+                            image_url={beast.image_url}
+                            title={beast.title}
+                            description={beast.description}
+                            keyword={beast.keyword}
+                            horns={beast.horns}
                             key={idx}
                             openModalHandler={this.props.openModalHandler}
                     />
