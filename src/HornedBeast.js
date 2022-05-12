@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card'
+import {Col} from 'react-bootstrap'
 
 class HornedBeast extends React.Component{
     constructor(props) {
@@ -15,30 +16,33 @@ class HornedBeast extends React.Component{
         });
     }
 
+    handleImgClick = () => {
+        this.props.openModalHandler(this.props.title, this.props.img_url, this.props.description)
+    }
+
     render() {
         return (
            <>
-            <Card style={{ width: '18rem' }}>
-            <Card.Img onClick={this.imgVote} variant="top" src={this.props.image_url} alt={this.props.alt} title={this.props.title}/>
-            <Card.Body>
-                <Card.Title>{this.props.title}</Card.Title>
+           <Col>
+            <Card style={{ width: '18rem'}} className="cards h-100">
+            <Card.Img 
+                onClick={this.handleImgClick}
+                variant="top" 
+                src={this.props.image_url} 
+                alt={this.props.alt} 
+                title={this.props.title}
+                />
+            <Card.Body onClick={this.imgVote}>
+                <Card.Title>{
+                    this.props.title}
+                </Card.Title>
                 <Card.Text>
-                {this.props.description}
+                    {this.props.description}
                 </Card.Text>
             </Card.Body>
             <Card.Footer className="text-muted">💖 {this.state.favorite}</Card.Footer>
             </Card>
-           {/* <article>
-                <h2>{this.props.title}</h2>
-                <p> 💖 {this.state.favorite}</p>
-                <img 
-                    src={this.props.image_url} 
-                    alt={this.props.alt} 
-                    title={this.props.title}
-                    onClick={this.imgVote}
-                    />
-                <p>{this.props.description}</p>
-            </article> */}
+            </Col>
            </>
         )
     }
