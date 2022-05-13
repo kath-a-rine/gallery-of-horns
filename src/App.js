@@ -4,6 +4,7 @@ import Footer from './Footer.js';
 import Main from './Main.js';
 import data from './data.json';
 import SelectedBeast from './SelectedBeast.js';
+import Form from 'react-bootstrap/Form'
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +13,8 @@ class App extends React.Component {
       isModalDisplayed: false,
       beastName: '',
       beastPic: '',
-      beastDescription: ''
+      beastDescription: '',
+      data: data
     };
   }
 
@@ -22,8 +24,7 @@ class App extends React.Component {
       isModalDisplayed: true,
       beastName: title,
       beastPic: image_url,
-      beastDescription: description
-
+      beastDescription: description,
     });
   }
 
@@ -33,16 +34,49 @@ class App extends React.Component {
     });
   }
 
+  hornSelected = (e) => {
+    let selected = e.target.value;
+   console.log(selected);
+    if (selected === 'one') {
+      // return all one horned beasts
+      let newData = data.filter(beast => beast.horns === 1);
+      console.log(newData);
+      this.setState({ data: newData});
+    } else if (selected === 'two') {
+      // return all two horned beasts
+      let newData = data.filter(beast => beast.horns === 2);
+      this.setState({ data: newData});
+    } else if (selected === 'threeOrMore') {
+      // return all beasts with three or more horns
+      let newData = data.filter(beast => beast.horns >= 3);
+      this.setState({ data: newData});
+    } else {
+      this.setState({data: data})
+    }
+   
+  }
+
   render() {
+
     return (
      <>
       <Header />
+      <Form>
+        <Form.Group>
+          <Form.Select
+            onChange={this.hornSelected}>
+            <option value="all">All</option>
+            <option value="one">One Horn</option>
+            <option value="two">Two Horns</option>
+            <option value="threeOrMore">Three or More Horns</option>
+          </Form.Select>
+        </Form.Group>
+      </Form>
       <Main
-        data={data}
+        data={this.state.data}
         openModalHandler={this.openModalHandler}
       />
       <Footer />
-
       <SelectedBeast 
         isModalDisplayed={this.state.isModalDisplayed}
         beastPic={this.state.beastPic}
