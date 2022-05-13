@@ -46,6 +46,18 @@ Estimate of time needed to complete: 2 hours
 
 Start time: 2:45pm
 
-Finish time: 
+Finish time: ???
 
-Actual time needed to complete: 
+Actual time needed to complete: completed over two days
+
+## Lab 04
+
+Feature #1: Filter by Number of Horns
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 3:45pm
+
+Finish time: 5:00pm
+
+Actual time needed to complete: 1 hour 15 min
